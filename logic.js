@@ -3,23 +3,14 @@ AOS.init();
 
 
 
-
 let UserInput = document.getElementById('UserInput')
 
+let ImgsContainer = document.getElementById('OutPutContainer')
 
-console.log(UserInput)
-
-
-let ImgsContainer = document.getElementById('ImgsContainer')
-
-// const UserInput = document.getElementById('UserInput').value.trim()     // userInput 
+let submitBtn = document.getElementById('submitBtn')
 
 
-const submitBtn = document.getElementById('submitBtn')    // submitBtn 
-
-// userInput 
-
-submitBtn.addEventListener('click', function () {
+submitBtn.addEventListener('click', async function () {
 
 
 
@@ -27,21 +18,19 @@ submitBtn.addEventListener('click', function () {
 
     // https://pixabay.com/api/?key=
 
-    const URL = 'https://pixabay.com/api/?key=' + API_KEY + '&q=' + `${UserInput.value}`   // api +
+
+    let format = ''
+
+    const URL = `https://pixabay.com/api/${format}/?key=` + API_KEY + '&q=' + `${UserInput.value}`   // api +
 
     console.log(URL)
 
 
-    console.log(UserInput)
+    let p = await fetch(URL).then(async (response) => await response.json())
 
-    let Render = document.getElementById('container')
-
-    let imgs = document.getElementById('img')
-
-
-    fetch(URL).then((response) => response.json())
 
         .then((data) => {
+
 
             console.log(data)
 
@@ -49,23 +38,53 @@ submitBtn.addEventListener('click', function () {
             getImges = data.hits
 
 
+
             if (data.hits.length === 0) alert('Enter A Valid Word')
 
 
-            else if (UserInput.value.length == 0) alert('Enter A Valid Word')
+            else if (UserInput.value.trim().length == 0) alert('Enter A Word')
 
 
             else {
+
+
                 getImges.forEach(element => {
 
 
+                    // for Imges 
+
                     let allPriviewImges = element.previewURL    // Priview Imges 
 
-                    let allHDImges = element.largeImageURL  //     //   HdImges
+                    let allHDImges = element.largeImageURL  //     //HdImges
+
+
+                    let a = document.createElement('a')   // a 
+
+                    let Img = document.createElement('img')     //  img
+
+                    console.log(Img)
+                    console.log(a)
+
+                    ImgsContainer.appendChild(a).appendChild(Img)
 
 
 
-                    let HdImges = document.createElement('a')
+                    // for videos 
+
+
+
+                    // let videoLink = element.videos.tiny.url
+
+
+                    // let videoTag = document.createElement('video')
+
+                    // let sourceTag = document.createElement('source')
+
+                    // ImgsContainer.appendChild(videoTag)
+
+                    // videoTag.load()
+
+
 
 
                     function SetHDAttri(el, attrs) {
@@ -78,68 +97,25 @@ submitBtn.addEventListener('click', function () {
                     }
 
 
+                    // for Imges 
+
+                    SetHDAttri(a, { 'href': allHDImges, 'target': 'blank', 'height': '50%', 'width': '50%', 'id': 'HdImg' })
+                    SetHDAttri(Img, { 'src': allPriviewImges, 'height': '25px', 'data-aos': 'fade-up', 'data-aos-delay': '8000' })
 
 
-                    SetHDAttri(HdImges, { 'href': allHDImges, 'target': 'blank', 'height': '100%', 'width': '100%', 'id': 'HdImg' })
+                    // for videos 
 
+                    // SetHDAttri(sourceTag, { 'src': videoLink })
+                    // SetHDAttri(videoTag, { 'height': '300', 'width': '300', 'controls': 'true', 'value': '1080', 'id': 'video' })
 
-
-                    // HdImges.setAttribute('href', allHDImges)
-                    // HdImges.setAttribute('target', 'blank')
-                    // HdImges.setAttribute('height', '100vh')
-                    // HdImges.setAttribute('width', '100%')
-
-
-                    // HdImges.style["width"] = "100%";
-
-
-
-                    console.log(HdImges)
-
-
-
-                    let Img = document.createElement('img')
-                    let ImgDeletBtn = document.createElement('button')
-
-
-
-
-                    function SetImgAttri(ele, attrs) {
-
-                        for (let key in attrs) {
-
-                            ele.setAttribute(key, attrs[key])
-
-                            // .ele.
-
-                        }
-
-                    }
-
-
-
-                    SetImgAttri(Img, { 'src': allPriviewImges, 'height': '25px', 'data-aos': 'fade-up', 'data-aos-delay': '8000' })
-
-
-
-                    // Img.setAttribute('src', allPriviewImges)
-                    // Img.setAttribute('height', '20px')
-                    // Img.setAttribute('weidth', '20px')
-
-
-                    let hdImg = ImgsContainer.appendChild(HdImges)
-
-                    hdImg.appendChild(Img).appendChild(ImgDeletBtn)
-
-                    console.log(Img)
-
-                    console.log(allPriviewImges)
 
                 });
-            }
-        })
 
-        .catch((err) => console.log(err))
+            }
+
+
+
+        }).catch((err) => console.log(err))
 
 
 })
@@ -165,17 +141,6 @@ submitBtn.addEventListener('click', function () {
 
 
 
-// $.getJSON(URL, function (data) {
-//     if (parseInt(data.totalHits) > 0)
-//         $.each(data.hits, function (i, hit) { console.log(hit.pageURL); });
-//     else
-//         console.log('No hits');
-// });
-
-
-
-
-
 // 'https://pixabay.com/api/?key=42366435-a7ce29bcd9380ebc415619aef&q=yellow+flowers&image_type=photo'
 
 
@@ -184,6 +149,77 @@ submitBtn.addEventListener('click', function () {
 
 
 
+
+
+// for Video
+
+
+
+
+// let url = ` https://pixabay.com/api/?key=42366435-a7ce29bcd9380ebc415619aef&q=yellow+flowers `
+
+
+// let vContainer = document.getElementById('OutPutContainer')
+
+
+// console.log(vContainer)
+
+// let vidoeslinks
+
+
+
+
+
+// fetch(url)
+//     .then((response) => response.json())
+//     .then((data) => {
+
+
+//         let videoTag
+
+//         let sourceTag
+
+//         console.log(data)
+
+//         // videos
+
+//         data.hits.forEach(element => {
+
+//             // vidoeslinks = element.videos.tiny.url
+
+
+//             // console.log(vidoeslinks)
+
+//             videoTag = document.createElement('video')
+
+//             sourceTag = document.createElement('source')
+
+//             vContainer.appendChild(videoTag)
+
+//             // videoTag.load()
+
+//             setATT(sourceTag, { 'src': vidoeslinks })
+//             setATT(videoTag, { 'height': '300', 'width': '300', 'controls': 'true', 'value': '1080', 'id': 'video' })
+
+
+
+//         });
+
+
+
+//         function setATT(e, attrs) {
+//             for (let kye in attrs) {
+
+//                 e.setAttribute(kye, attrs[kye])
+//             }
+//         }
+
+
+
+
+
+//     })
+//     .catch((err) => console.log(err))
 
 
 

@@ -6,9 +6,24 @@
 body {
   margin: 0px;
   padding: 0px;
-  color: aliceblue;
+  color: rgb(50, 52, 53);
 
-  background: #000;
+  /* background: #000; */
+  background: #403b4a; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #e7e9bb,
+    #403b4a
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #e7e9bb,
+    #403b4a
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  font-family: "kalom", cursive;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .container {
@@ -55,23 +70,23 @@ input::placeholder {
   justify-content: center;
 }
 
-#ImgsContainer {
+#OutPutContainer {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   display: grid;
-  grid-template-columns: repeat(5, 8fr);
+  grid-template-columns: repeat(3, 8fr);
   column-gap: 10px;
-  row-gap: 1em;
+  row-gap: 2em;
 }
 
-#ImgsContainer img {
+#OutPutContainer img {
   margin-bottom: 20px;
   height: auto;
   width: 99%;
-  background-image: url("landscape.jpg");
-
+  /* background-image: url("landscape.jpg"); */
+  background-repeat: no-repeat;
   padding: auto;
   max-width: 100%;
   object-fit: contain;
@@ -87,12 +102,27 @@ input::placeholder {
   /* ///////////////// */
 }
 
-#ImgsContainer img:hover {
+#OutPutContainer img:hover {
   border: solid rgb(8, 11, 1) 2px;
   transform: translateY(-20px);
 }
 
-@media screen and (max-width: 480px) {
+/* for videos  */
+
+#OutPutContainer video {
+}
+
+#OutPutContainer video:hover {
+  border: solid rgb(8, 11, 1) 2px;
+  transform: translateY(-20px);
+}
+
+/* for video */
+
+/* #OutPutContainer video {
+} */
+
+@media screen and (max-width: 420px) {
   .container {
     width: 80%;
     min-width: 100%;
@@ -138,20 +168,39 @@ input::placeholder {
     font-size: 13px;
   }
 
-  #ImgsContainer {
+  #OutPutContainer {
+    justify-content: center;
+    margin: 10px;
     overflow: hidden;
     position: relative;
     margin: 0 auto;
     height: auto;
     display: grid;
     margin-top: 30px;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
 
-  #ImgsContainer img {
+  #OutPutContainer img {
     height: 80%;
     width: 100%;
+  }
+}
 
+@media screen and (min-width: 760px) {
+  #OutPutContainer {
+    justify-content: center;
+    margin: 10px;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+    height: auto;
+    display: grid;
+    margin-top: 30px;
+    grid-template-columns: repeat(3, 10fr);
+  }
 
+  #OutPutContainer video {
+    display: flex;
+    justify-content: center;
   }
 }
