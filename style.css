@@ -8,22 +8,45 @@ body {
   padding: 0px;
   color: rgb(50, 52, 53);
 
-  /* background: #000; */
-  background: #403b4a; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #e7e9bb,
-    #403b4a
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #e7e9bb,
-    #403b4a
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #403b4a;
+  background: -webkit-linear-gradient(to right, #e7e9bb, #403b4a);
+  background: linear-gradient(to right, #e7e9bb, #403b4a);
 
   font-family: "kalom", cursive;
   font-weight: 400;
   font-style: normal;
+}
+
+/* ///////////// NAVBAR   ////////////// */
+
+.navbar {
+  overflow: hidden;
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  height: 80px;
+  width: 100%;
+  /* margin: 2px; */
+  border-radius: 10px;
+  margin-bottom: 80%;
+  background: #403b4a;
+  background: -webkit-linear-gradient(to right, #e7e9bb, #403b4a);
+  background: linear-gradient(to right, #e7e9bb, #403b4a);
+  /* position: relative; */
+}
+
+.navbar-brand {
+  font-size: 40px;
+}
+
+#UserInput {
+  height: 50px;
+  width: 150%;
+}
+
+main {
+  height: 100vh;
+  width: auto;
 }
 
 .container {
@@ -37,30 +60,6 @@ body {
   margin: 20px;
 }
 
-input {
-  height: 50px;
-  width: 40%;
-  max-width: 50%;
-  border: none;
-  stroke-opacity: 0px;
-  border-radius: 5px;
-  text-align: center;
-  font-size: 25px;
-}
-
-input::placeholder {
-  text-align: center;
-}
-
-#submitBtn {
-  height: 50px;
-  width: 20%;
-  border-radius: 5px;
-  margin-top: 20px;
-  cursor: pointer;
-  font-size: 20px;
-}
-
 #UserContainer {
   display: block;
   margin-top: 50px;
@@ -72,6 +71,7 @@ input::placeholder {
 
 #OutPutContainer {
   width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -79,6 +79,9 @@ input::placeholder {
   grid-template-columns: repeat(3, 8fr);
   column-gap: 10px;
   row-gap: 2em;
+  margin-bottom: 80px;
+  margin-top: 80px;
+  overflow: hidden;
 }
 
 #OutPutContainer img {
@@ -98,29 +101,41 @@ input::placeholder {
   justify-content: center;
   transition: 0.5s ease-in-out;
   border: solid rgb(255, 248, 234) 2px;
-
-  /* ///////////////// */
+  margin-top: 145px;
 }
 
 #OutPutContainer img:hover {
   border: solid rgb(8, 11, 1) 2px;
-  transform: translateY(-20px);
+  transform: translateY(-5px);
 }
 
 /* for videos  */
 
 #OutPutContainer video {
+  height: 100%;
+  width: 99%;
+  max-width: 100%;
+  object-fit: contain;
+  border: #d9d1d16b solid 3px;
+  border-radius: 20px;
+  display: flex;
+  margin-bottom: 40px;
+  justify-content: center;
+  border: solid rgb(255, 248, 234) 2px;
+  display: grid;
+  grid-template-columns: repeat(3, 8fr);
+  column-gap: 10px;
+  row-gap: 2em;
+  /* margin-top: 30%; */
+  margin-bottom: 30%;
+  transition: 0.5s ease-in-out;
+  margin-top: 145px;
 }
 
 #OutPutContainer video:hover {
   border: solid rgb(8, 11, 1) 2px;
-  transform: translateY(-20px);
+  transform: translateY(-5px);
 }
-
-/* for video */
-
-/* #OutPutContainer video {
-} */
 
 @media screen and (max-width: 420px) {
   .container {
@@ -131,9 +146,8 @@ input::placeholder {
     align-items: center;
     text-align: center;
     margin: 0 auto;
-    /* padding: 10px; */
 
-    padding: 10px;
+    /* padding: 10px; */
   }
 
   #UserContainer {
@@ -147,25 +161,28 @@ input::placeholder {
     font-size: 1rem;
   }
 
-  input {
-    /* height: 50px; */
-    width: 100%;
-    border: none;
-    border-bottom: #000 2px solid;
-    border-radius: 5px;
-    text-align: center;
-    font-size: 15px;
+  .navbar {
+    height: 15%;
+    margin-bottom: 45%;
   }
 
-  input::placeholder {
-    text-align: center;
+  .navbar-brand {
+    margin: 0 auto;
+    font-size: 20px;
+  }
+
+  #UserInput {
+    height: 40px;
+    width: 50%;
+    margin-left: 10px;
+    margin: 10 50px;
   }
 
   #submitBtn {
-    height: 42px;
-    width: 77px;
-    padding: 2px;
-    font-size: 13px;
+    font-size: 10px;
+    height: 35px;
+    width: 20%;
+    margin: 13px 9px;
   }
 
   #OutPutContainer {
@@ -176,13 +193,18 @@ input::placeholder {
     margin: 0 auto;
     height: auto;
     display: grid;
-    margin-top: 30px;
+    margin-top: 135px;
     grid-template-columns: repeat(1, 1fr);
   }
 
   #OutPutContainer img {
     height: 80%;
     width: 100%;
+  }
+
+  #OutPutContainer video {
+    height: 80%;
+    /* width: 100%; */
   }
 }
 

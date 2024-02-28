@@ -10,8 +10,8 @@ let ImgsContainer = document.getElementById('OutPutContainer')
 let submitBtn = document.getElementById('submitBtn')
 
 
-submitBtn.addEventListener('click', async function () {
-
+submitBtn.addEventListener('click', async function (e) {
+    e.preventDefault()
 
 
     const API_KEY = '42366435-a7ce29bcd9380ebc415619aef';
@@ -49,40 +49,26 @@ submitBtn.addEventListener('click', async function () {
 
 
                 getImges.forEach(element => {
-
-
                     // for Imges 
 
-                    let allPriviewImges = element.previewURL    // Priview Imges 
+                    let a
+                    let Img
 
-                    let allHDImges = element.largeImageURL  //     //HdImges
+                    let allPriviewImges
 
-
-                    let a = document.createElement('a')   // a 
-
-                    let Img = document.createElement('img')     //  img
-
-                    console.log(Img)
-                    console.log(a)
-
-                    ImgsContainer.appendChild(a).appendChild(Img)
+                    let allHDImges
 
 
 
-                    // for videos 
+                    // for videos
 
 
+                    let videoLink
 
-                    // let videoLink = element.videos.tiny.url
+                    let videoTag
 
+                    let sourceTag
 
-                    // let videoTag = document.createElement('video')
-
-                    // let sourceTag = document.createElement('source')
-
-                    // ImgsContainer.appendChild(videoTag)
-
-                    // videoTag.load()
 
 
 
@@ -97,16 +83,65 @@ submitBtn.addEventListener('click', async function () {
                     }
 
 
-                    // for Imges 
 
-                    SetHDAttri(a, { 'href': allHDImges, 'target': 'blank', 'height': '50%', 'width': '50%', 'id': 'HdImg' })
-                    SetHDAttri(Img, { 'src': allPriviewImges, 'height': '25px', 'data-aos': 'fade-up', 'data-aos-delay': '8000' })
+
+
+
+                    if (!URL.includes('videos')) {
+
+
+
+                        allPriviewImges = element.previewURL    // Priview Imges 
+
+                        allHDImges = element.largeImageURL  //     //HdImges
+
+
+                        a = document.createElement('a')   // a 
+
+                        Img = document.createElement('img')     //  img
+
+                        // console.log(Img)
+                        console.log(a)
+
+                        ImgsContainer.appendChild(a).appendChild(Img)
+
+
+
+                        SetHDAttri(a, { 'href': allHDImges, 'target': 'blank', 'height': '50%', 'width': '50%', 'id': 'HdImg' })
+                        SetHDAttri(Img, { 'src': allPriviewImges, 'height': '25px', 'data-aos': 'fade-up', 'data-aos-delay': '8000' })
+
+
+
+                    } else {
+
+
+                        videoLink = element.videos.tiny.url
+
+
+                        videoTag = document.createElement('video')
+
+                        sourceTag = document.createElement('source')
+
+                        ImgsContainer.appendChild(videoTag)
+
+                        // videoTag.load()
+
+
+                        SetHDAttri(videoTag, { 'height': '300', 'width': '300', 'controls': 'true', 'value': '1080', 'id': 'video' })
+                        SetHDAttri(sourceTag, { 'src': videoLink })
+
+
+
+                    }
 
 
                     // for videos 
 
-                    // SetHDAttri(sourceTag, { 'src': videoLink })
-                    // SetHDAttri(videoTag, { 'height': '300', 'width': '300', 'controls': 'true', 'value': '1080', 'id': 'video' })
+
+
+
+
+
 
 
                 });
