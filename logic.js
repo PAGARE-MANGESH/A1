@@ -102,7 +102,7 @@ submitBtn.addEventListener('click', async function (e) {
 
 
                         // console.log(Img)
-                        console.log(a)
+                        // console.log(a)
 
                         ImgsContainer.appendChild(a).appendChild(Img)
 
