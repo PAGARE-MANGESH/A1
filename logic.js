@@ -47,7 +47,6 @@ submitBtn.addEventListener('click', async function (e) {
 
             else {
 
-
                 getImges.forEach(element => {
                     // for Imges 
 
@@ -61,7 +60,6 @@ submitBtn.addEventListener('click', async function (e) {
                     let btn
 
 
-
                     // for videos
 
 
@@ -70,8 +68,6 @@ submitBtn.addEventListener('click', async function (e) {
                     let videoTag
 
                     let sourceTag
-
-
 
 
 
