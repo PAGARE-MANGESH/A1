@@ -58,6 +58,8 @@ submitBtn.addEventListener('click', async function (e) {
 
                     let allHDImges
 
+                    let btn
+
 
 
                     // for videos
@@ -98,7 +100,10 @@ submitBtn.addEventListener('click', async function (e) {
 
                         a = document.createElement('a')   // a 
 
-                        Img = document.createElement('img')     //  img
+                        Img = document.createElement('img')   //  img
+
+                        btn = document.createElement('botton')     //  img
+
 
                         // console.log(Img)
                         console.log(a)
