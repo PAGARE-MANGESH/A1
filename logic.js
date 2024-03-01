@@ -19,7 +19,7 @@ submitBtn.addEventListener('click', async function (e) {
     // https://pixabay.com/api/?key=
 
 
-    let format = ''
+    let format = 'videos'
 
     const URL = `https://pixabay.com/api/${format}/?key=` + API_KEY + '&q=' + `${UserInput.value}`   // api +
 
@@ -35,9 +35,11 @@ submitBtn.addEventListener('click', async function (e) {
             console.log(data)
 
 
+
+
+
+
             getImges = data.hits
-
-
 
             if (data.hits.length === 0) alert('Enter A Valid Word')
 
@@ -56,8 +58,6 @@ submitBtn.addEventListener('click', async function (e) {
                     let allPriviewImges
 
                     let allHDImges
-
-                    let btn
 
 
                     // for videos
@@ -98,14 +98,12 @@ submitBtn.addEventListener('click', async function (e) {
 
                         Img = document.createElement('img')   //  img
 
-                        btn = document.createElement('botton')     //  img
 
-
+                        // console.log(clearbtn)
                         // console.log(Img)
                         // console.log(a)
 
                         ImgsContainer.appendChild(a).appendChild(Img)
-
 
 
                         SetHDAttri(a, { 'href': allHDImges, 'target': 'blank', 'height': '50%', 'width': '50%', 'id': 'HdImg' })
@@ -113,23 +111,27 @@ submitBtn.addEventListener('click', async function (e) {
 
 
 
+
+
                     } else {
 
 
-                        videoLink = element.videos.tiny.url
+                        videoLink = element.videos.small.url
 
 
                         videoTag = document.createElement('video')
 
                         sourceTag = document.createElement('source')
 
-                        ImgsContainer.appendChild(videoTag)
+                        ImgsContainer.appendChild(videoTag).append(sourceTag)
 
-                        // videoTag.load()
+                        videoTag.load()
+
+                        console.log(videoTag)
 
 
-                        SetHDAttri(videoTag, { 'height': '300', 'width': '300', 'controls': 'true', 'value': '1080', 'id': 'video' })
-                        SetHDAttri(sourceTag, { 'src': videoLink })
+                        SetHDAttri(videoTag, { 'height': '200', 'width': '300', 'controls': 'true', 'value': '1080', 'id': 'video' })
+                        SetHDAttri(sourceTag, { 'src': videoLink, 'type': 'video/mp4' })
 
 
 
@@ -138,16 +140,12 @@ submitBtn.addEventListener('click', async function (e) {
 
                     // for videos 
 
-
-
-
-
-
-
-
                 });
 
             }
+
+
+
 
 
 
@@ -157,6 +155,18 @@ submitBtn.addEventListener('click', async function (e) {
 })
 
 
+
+
+
+function clearAll() {
+
+    ImgsContainer.innerHTML = ''
+    document.getElementById('UserInput').value = ''
+
+
+    console.log('click')
+
+}
 
 
 
