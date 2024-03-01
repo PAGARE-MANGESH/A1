@@ -114,14 +114,14 @@ submitBtn.addEventListener('click', async function (e) {
 
 
                         // console.log(clearbtn)
-                        // console.log(Img)
+                        console.log(Img)
                         // console.log(a)
 
                         ImgsContainer.appendChild(a).appendChild(Img)
 
 
                         SetHDAttri(a, { 'href': allHDImges, 'target': 'blank', 'height': '50%', 'width': '50%', 'id': 'HdImg' })
-                        SetHDAttri(Img, { 'src': allPriviewImges, 'height': '25px', 'data-aos': 'fade-up', 'data-aos-delay': '8000' })
+                        SetHDAttri(Img, { 'src': allPriviewImges, 'height': '25px', 'data-aos': 'fade-up', 'data-aos-delay': '8000', 'alt': 'Input releted img' })
 
 
 
