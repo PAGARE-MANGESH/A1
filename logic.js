@@ -19,9 +19,23 @@ submitBtn.addEventListener('click', async function (e) {
     // https://pixabay.com/api/?key=
 
 
-    let format = 'videos'
+    let format = confirm('Do you Want Videos')
+
+
+    if (format == true) {
+
+        format = 'videos'
+
+    } else {
+        format = ''
+    }
+
+
+
 
     const URL = `https://pixabay.com/api/${format}/?key=` + API_KEY + '&q=' + `${UserInput.value}`   // api +
+
+
 
     console.log(URL)
 
